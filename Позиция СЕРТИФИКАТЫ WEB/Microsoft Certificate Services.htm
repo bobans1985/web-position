@@ -1,0 +1,408 @@
+
+<HTML>
+<Head>
+	<Meta HTTP-Equiv="Content-Type" Content="text/html; charset=UTF-8">
+	<Title>Microsoft Certificate Services</Title>
+</Head>
+<Body BgColor=#FFFFFF Link=#0000FF VLink=#0000FF ALink=#0000FF  OnLoad="postLoad();" ><Font ID=locPageFont Face="Arial">
+
+<Table Border=0 CellSpacing=0 CellPadding=4 Width=100% BgColor=#008080>
+<TR>
+	<TD><Font Color=#FFFFFF><LocID ID=locMSCertSrv><Font Face="Arial" Size=-1><B><I>Microsoft</I></B> Certificate Services &nbsp;--&nbsp; Euromet Position &nbsp;</Font></LocID></Font></TD>
+	<TD ID=locHomeAlign Align=Right><A Href="/certsrv"><Font Color=#FFFFFF><LocID ID=locHomeLink><Font Face="Arial" Size=-1><B>Home</B></Font></LocID></Font></A></TD>
+</TR>
+</Table>
+
+<P ID=locPageTitle> <B> Certificate Issued </B>
+<!-- Green HR --><Table Border=0 CellSpacing=0 CellPadding=0 Width=100%><TR><TD BgColor=#008080><Img Src="certspc.gif" Alt="" Height=2 Width=1></TD></TR></Table>
+
+<P ID=locInfo> The certificate you requested was issued to you.</P>
+
+<P><Form Name=UIForm>
+
+<Table Border=0 CellSpacing=0 CellPadding=0>
+
+<TR>
+	<TD><Img Src="certspc.gif" Alt="" Height=1 Width=40></TD>
+	<TD><Img Src="certcert.gif" Alt="" Width=32 Height=24></TD>
+	<TD><Img Src="certspc.gif" Alt="" Height=1 Width=5></TD>
+	
+	<TD><Font ID=locInstCert1Font Face="Arial"><Span tabindex=0 ID=spnInstall
+		Style="cursor:hand; color:#0000FF; text-decoration:underline;"
+		OnContextMenu="return false;"
+		OnMouseOver="window.status='Install certificate';return true;" 
+		OnMouseOut="window.status='';return true;" 
+		OnKeyDown="if (13==event.keyCode) {Install();return false;} else if (9==event.keyCode) {return true;};return false;"
+		OnClick="Install();return false;"><LocID ID=locInstallCert1>Install this certificate</LocID></Span>
+		<Span ID=spnAlreadyInstalled Style="display:none"><LocID ID=locAlreadyInstalledCert>(You have already installed this certificate)</LocID></Span></Font></TD>
+	
+</TR>
+</Table>
+</Form></P>
+
+<!-- This option is shown if install fails -->
+<Span ID=spnRmpn Style="display:none">
+<Form Action="certrmpn.asp" Method=Post>
+<Input Type=Hidden Name=Action Value="rmpn">
+<Input Type=Hidden Name=ReqID Value="6">
+<P><Input ID=locBtnRemove Type=Submit Value="Remove"> - Remove this request from your list of pending requests.
+</Form>
+</Span>
+
+
+<!-- Green HR --><Table Border=0 CellSpacing=0 CellPadding=0 Width=100%><TR><TD BgColor=#008080><Img Src="certspc.gif" Alt="" Height=2 Width=1></TD></TR></Table>
+<!-- White HR --><Table Border=0 CellSpacing=0 CellPadding=0 Width=100%><TR><TD BgColor=#FFFFFF><Img Src="certspc.gif" Alt="" Height=5 Width=1></TD></TR></Table>
+
+</Font>
+<!-- ############################################################ -->
+<!-- End of standard text. Scripts follow  -->
+	
+
+
+<Script Language="JavaScript">
+	//----------------------------------------------------------------
+	// convert a (signed) number into a (unsigned) hex string
+	function toHex(number) {
+		var sRight=(number&0x0FFFFFFF).toString(16).toUpperCase();
+		sRight="0000000".substring(0, 7-sRight.length)+sRight;
+		return ((number>>28)&0x0000000F).toString(16).toUpperCase()+sRight;
+	}
+</Script>
+
+
+<!-- IE SPECIFIC:  -->
+<Span ID=spnXEnroll Style="display:none">
+	<!-- XEnroll will be inserted here -->
+</Span>
+
+<!-- A DHTML alert box, for the transient message routines -->
+<Table Border=0 CellSpacing=0 CellPadding=0 ID=tblWorkingMsg Style="display:none; position:absolute;">
+<TR>
+	<TD BgColor=#000040 Height=3 ColSpan=3></TD>
+</TR> <TR>
+	<TD BgColor=#000040 Width=3></TD>
+	<TD BgColor=#008080><Font Color=#FFFFFF><B><BR>&nbsp;&nbsp;&nbsp;&nbsp;<Span ID=spnWorkingMsg></Span>&nbsp;&nbsp;&nbsp;&nbsp;<BR><BR></B></Font></TD>
+	<TD BgColor=#000040 Width=3></TD>
+</TR> <TR>
+	<TD BgColor=#000040 Height=3 ColSpan=3></TD>
+</TR>
+</Table>
+
+<Script Language="JavaScript">
+	//----------------------------------------------------------------
+	// Show the message in the status bar and in the middle of the screen (DHTML only)
+	function ShowTransientMessage(sMessage) {
+		window.status=sMessage;
+		
+		spnWorkingMsg.innerText=sMessage;
+		tblWorkingMsg.style.display='';
+		tblWorkingMsg.style.pixelTop=
+			(document.body.clientHeight/2)-(tblWorkingMsg.offsetHeight/2)+(document.body.scrollTop);
+		tblWorkingMsg.style.pixelLeft=
+			(document.body.clientWidth/2)-(tblWorkingMsg.offsetWidth/2)+(document.body.scrollLeft);
+		
+	}
+
+	//----------------------------------------------------------------
+	// hide the message box
+	function HideTransientMessage() {
+		window.status="";
+		
+		tblWorkingMsg.style.display='none';
+		
+	}
+</Script>
+
+<Script Language="JavaScript">
+
+	//----------------------------------------------------------------
+	// IE SPECIFIC:
+	// Download the appropriate version of XEnroll if the local 
+	// version is too old, and wait for the control to finish downloading.
+	// sContinueCmd will be executed when the control is ready
+	function loadXEnroll(sContinueCmd) {
+
+		// clear the current control, if there is one
+		spnXEnroll.innerHTML="";
+		
+		// determine the file name from the CPU type.
+		var sCPU=navigator.cpuClass.toLowerCase();
+		if ("x86"!=sCPU && "ia64"!=sCPU && "amd64"!=sCPU && "x64"!=sCPU) {
+			alert(eval(L_BadCPU_ErrorMessage));
+			g_fnOnLoadFail();
+			return;
+		}
+
+		// load the control
+		var sControl="<Object \n"
+			+ "  ClassID=\"clsid:127698e4-e730-4e5c-a2b1-21490a70c8a1\"\n"
+			+ "  Codebase=\"/CertControl/xenrlinf.cab#Version=5,131,3686,0\"\n"
+			+ "  ID=XEnroll\n"
+			+ "></Object>";
+		// alert("About to create:\n" + sControl);
+		spnXEnroll.innerHTML=sControl;
+
+		// begin polling to see if the control is loaded
+		setTimeout("loadXEnrollPhase2(\""+sContinueCmd+"\")", 1);
+	}
+	function loadXEnrollPhase2(sContinueCmd) {
+		// continued from above
+
+		// is the control loaded?
+		if (4!=XEnroll.readyState) { // 4=READYSTATE_COMPLETE
+			// no, show a message and wait a while
+			ShowTransientMessage(L_DownloadingControl_Message);
+			setTimeout("loadXEnrollPhase2(\""+sContinueCmd+"\")", 500);
+		} else {
+			// yes, hide the message
+			HideTransientMessage();
+
+			// smoke test the control
+			var nResult=ConfirmXEnrollLoaded();
+			if (0!=nResult) {
+				if (438==nResult) {
+					alert(L_ControlLoadFailed_ErrorMessage);
+				} else {
+					var sErrorNumber="0x"+toHex(nResult);
+					alert(eval(L_ControlLoadFailedEx_ErrorMessage));
+				}
+				g_fnOnLoadFail();
+				return;
+			}
+
+			// Continue with what the caller wanted us to do
+			execScript(sContinueCmd, "JavaScript");
+		}
+	}
+
+	//----------------------------------------------------------------
+	// IE SPECIFIC:
+	// disable all the controls on this page so the user can't do anything
+	function disableAllControls() {
+
+		// some pages do not have any controls
+		if (null==document.UIForm) {
+			return;
+		}
+
+		// disable every control on the page
+		var nCount=document.UIForm.elements.length;
+		var nIndex;
+		for (nIndex=0; nIndex<nCount; nIndex++) { //>
+			document.UIForm.elements(nIndex).disabled=true;
+		}
+	}
+
+	//----------------------------------------------------------------
+	// If XEnroll fails to load, this function will be called.
+	// By default, disable all controls.
+	var g_fnOnLoadFail=disableAllControls;
+
+</Script>
+<Script Language="VBScript">
+	'-----------------------------------------------------------------
+	' Strings to be localized
+	Const L_BadCPU_ErrorMessage="""Your CPU (""+sCPU+"") is not supported."""
+	Const L_DownloadingControl_Message="Downloading ActiveX control..."
+	Const L_ControlLoadFailed_ErrorMessage="The proper version of the ActiveX control failed to download and install. You may not have sufficient permissions. Please ask your system administrator for assistance."
+	Const L_ControlLoadFailedEx_ErrorMessage="""An unexpected error (""+sErrorNumber+"") occurred while downloading and installing the proper version of the ActiveX control. Please ask your system administrator for assistance."""
+
+	'-----------------------------------------------------------------
+	' IE SPECIFIC:
+	' Test to make sure XEnroll loaded properly by calling a method on it.
+	' For best results, the method we call should only be available in the 
+	' most recent version of the control, however any method will detect
+	' failure to create the object.
+	Function ConfirmXEnrollLoaded()
+		On Error Resume Next
+		Dim nTest
+		nTest=XEnroll.HashAlgID
+		ConfirmXEnrollLoaded=Err.Number
+	End Function
+</Script>
+
+<!-- This form passes data to certrmpn.asp -->
+<Span Style="display:none">
+<Form Name=SubmittedData Action="certrmpn.asp" Method=Post>
+<Input Type=Hidden Name=Action Value="inst">
+<Input Type=Hidden Name=ReqID Value="6">
+</Form>
+<!-- This form is used to try to prevent installing twice -->
+<Form Name=State><Input Type=Hidden Name=AlreadyInstalled Value=""></Form>
+</Span>
+
+<Script Language="JavaScript">
+	//================================================================
+	// PAGE GLOBAL VARIABLES
+
+	//----------------------------------------------------------------
+	// Strings To Be Localized
+	var L_StillLoading_ErrorMessage="This page has not finished loading yet. Please wait a few seconds and try again.";
+	var L_NoPrivKey_ErrorMessage="The certificate has probably been installed already.\n\n(Unable to install the certificate: The private key\ncorresponding with this certificate could not be found.)";
+	var L_CannotAddRoot_ErrorMessage="The certificate has been installed.\nHowever you cannot add a root certificate into your local store.\nThis may be because of the domain group policy.\n\nPlease contact the CA administrators if you see any chain\nverification failure on the certificate.";
+	var L_RootIsNotAdded_ErrorMessage="The certificate has been installed.\nHowever the root certificate is not installed.\nYou can go to the home page to download the CA root certificate.";
+	var L_UnknownInstallFailure_ErrorMessage="\"Unable to install the certificate:\\n\\Error: \"+sErrorNumber";
+	var L_Cancelled_ErrorMessage="The operation was canceled by the user.";
+
+	// IE is not ready until XEnroll has been loaded
+	var g_bOkToInstall=false;
+
+	//================================================================
+	// INITIALIZATION ROUTINES
+
+	//----------------------------------------------------------------
+	// This contains the functions we want executed immediately after load completes
+	function postLoad() {
+		// Load an XEnroll object into the page
+		loadXEnroll("postLoadPhase2()"); 
+	}
+	function postLoadPhase2() {
+		// continued from above
+
+		// Now we're ready to go
+		g_bOkToInstall=true;
+
+		// if the user installed the cert then pressed back,
+		// we'll try to keep them from getting confused by preventing
+		// them from trying to install again and getting an error.
+		if (""!=document.State.AlreadyInstalled.value) {
+			spnAlreadyInstalled.style.display="";
+			spnInstall.style.display="none";
+		}
+	}
+
+	//----------------------------------------------------------------
+	function markInstalled() {
+		document.State.AlreadyInstalled.value="Y";
+	}
+
+	//================================================================
+	// INSTALL ROUTINES
+
+	//----------------------------------------------------------------
+	// perform substitution on the error string, because VBScript cannot
+	function evalErrorMessage(sErrorNumber) {
+		return eval(L_UnknownInstallFailure_ErrorMessage);
+	}
+</Script>
+
+<Script Language="VBScript">
+	Public sPKCS7
+	sPKCS7=""
+	sPKCS7=sPKCS7 & "MIIK5QYJKoZIhvcNAQcCoIIK1jCCCtICAQMxCzAJBgUrDgMCGgUAMIGpBggrBgEF" & vbNewLine
+	sPKCS7=sPKCS7 & "BQcMA6CBnASBmTCBljCBjzBJAgEBBggrBgEFBQcHATE6MDgCAQAwAwIBAQwuSXNz" & vbNewLine
+	sPKCS7=sPKCS7 & "dWVkICBSZXN1Ym1pdHRlZCBieSBJLUJBTkswMDJcQWRtaW5pc3RyYXRvcjBCAgEC" & vbNewLine
+	sPKCS7=sPKCS7 & "BgorBgEEAYI3CgoBMTEwLwIBADADAgEBMSUwIwYJKwYBBAGCNxURMRYEFHicHcpH" & vbNewLine
+	sPKCS7=sPKCS7 & "qewYQJ6yYOI+gYMDn/IaMAAwAKCCCHgwggOyMIICmqADAgECAhB7sY22qM1TmEWj" & vbNewLine
+	sPKCS7=sPKCS7 & "jPvQrKHQMA0GCSqGSIb3DQEBBQUAMBsxGTAXBgNVBAMTEEV1cm9tZXQgUG9zaXRp" & vbNewLine
+	sPKCS7=sPKCS7 & "b24wHhcNMDkwNjI5MTAzMzUyWhcNMTkwNjI5MTA0MTQ4WjAbMRkwFwYDVQQDExBF" & vbNewLine
+	sPKCS7=sPKCS7 & "dXJvbWV0IFBvc2l0aW9uMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA" & vbNewLine
+	sPKCS7=sPKCS7 & "tS8kC1sp4uABg82/GAHFuG4anXn5PZSi1lsCj6VKQ9ExZb+OcSgjDWlhYS/slsIB" & vbNewLine
+	sPKCS7=sPKCS7 & "B2DQ3J3uBUtXndR2JKKa09aXGDfnP95XDUgORrVeXt14D1MqgI9EDSrIP462tIpQ" & vbNewLine
+	sPKCS7=sPKCS7 & "o3FKQ8v+5RdnH0eFxMk6d3FIa4/BdBFILuPphpzNmFE2q70r9/nRw896iNxFIoqb" & vbNewLine
+	sPKCS7=sPKCS7 & "TfP2alEAvnNF93kEKmS8hTrmOEpghqP/u+AlC06O0IOrxoOX1pxTMGLatzTm5GaW" & vbNewLine
+	sPKCS7=sPKCS7 & "3uYi3MfLEhlgM5is5M7+4kkz+8xPDVbGMbQnyjxy2gDI/JUw9mEgWVLAZLCOpuLK" & vbNewLine
+	sPKCS7=sPKCS7 & "CMMyJJsD9sXVv6b32Q3bKwIDAQABo4HxMIHuMAsGA1UdDwQEAwIBhjAPBgNVHRMB" & vbNewLine
+	sPKCS7=sPKCS7 & "Af8EBTADAQH/MB0GA1UdDgQWBBQNstAOSNsb26jwsjwAPmUMolKxHTCBnAYDVR0f" & vbNewLine
+	sPKCS7=sPKCS7 & "BIGUMIGRMIGOoIGLoIGIhkJodHRwOi8vaS1iYW5rMDAyLm1hc3Rlci5pbnRlcm5h" & vbNewLine
+	sPKCS7=sPKCS7 & "bC9DZXJ0RW5yb2xsL0V1cm9tZXQlMjBQb3NpdGlvbi5jcmyGQmZpbGU6Ly9cXGkt" & vbNewLine
+	sPKCS7=sPKCS7 & "YmFuazAwMi5tYXN0ZXIuaW50ZXJuYWxcQ2VydEVucm9sbFxFdXJvbWV0IFBvc2l0" & vbNewLine
+	sPKCS7=sPKCS7 & "aW9uLmNybDAQBgkrBgEEAYI3FQEEAwIBADANBgkqhkiG9w0BAQUFAAOCAQEAi7h6" & vbNewLine
+	sPKCS7=sPKCS7 & "//Of1dvvmPqoF65s9DKBEVsoorwbwNijCcplJeH9sszcbMztubk/Strn5mvovAJ7" & vbNewLine
+	sPKCS7=sPKCS7 & "PcfBHmHWZVJcoZwQRljIfZQHOKHtFZtiKZmdyMLR1nkbbC+qw/fqZ2ymCjY8bBhQ" & vbNewLine
+	sPKCS7=sPKCS7 & "evDz79N8EHPbWG17hkP7Yhbf4v1KYFZP3bSyUWZSjut0cihyOAh6EX5qU0V5qOuj" & vbNewLine
+	sPKCS7=sPKCS7 & "FZ/y/w/BZAeZvN/wg9BgkRtC4deNN46TXcQInrWC7BqgO/sAlBX6Saszz48YxW/y" & vbNewLine
+	sPKCS7=sPKCS7 & "bGAplO8OGLULTYthIQG/PRlRm5F2NwprdI7I6zXncEGsvXpSlu0bp8WZ1463vawk" & vbNewLine
+	sPKCS7=sPKCS7 & "TBr9nWhSz98idTL8kzCCBL4wggOmoAMCAQICCirnR1QAAAAAAAYwDQYJKoZIhvcN" & vbNewLine
+	sPKCS7=sPKCS7 & "AQEFBQAwGzEZMBcGA1UEAxMQRXVyb21ldCBQb3NpdGlvbjAeFw0wOTA2MjkxMTMz" & vbNewLine
+	sPKCS7=sPKCS7 & "MzNaFw0xMDA2MjkxMTQzMzNaMGwxDzANBgNVBAgTBnF3ZXJ0eTEPMA0GA1UEBxMG" & vbNewLine
+	sPKCS7=sPKCS7 & "cXdlcnR5MQ8wDQYDVQQKEwZxd2VydHkxDzANBgNVBAsTBnF3ZXJ0eTEPMA0GA1UE" & vbNewLine
+	sPKCS7=sPKCS7 & "AxMGcXdlcnR5MRUwEwYJKoZIhvcNAQkBFgZxd2VydHkwgZ8wDQYJKoZIhvcNAQEB" & vbNewLine
+	sPKCS7=sPKCS7 & "BQADgY0AMIGJAoGBAMir+FoxmslBPei1aJ9am8kslgj3C3/mBUNnW+bMtIM2yL/h" & vbNewLine
+	sPKCS7=sPKCS7 & "A4bcY8FWpaRye9wYBjXs9pkHe74oHP27NNGldSxffeDOwnPXaj8rV+z4hZwNZpUz" & vbNewLine
+	sPKCS7=sPKCS7 & "pxpxs8KMJ2H4T6vFeCeUwxj29Qtn0qCq2En7CviQ1eUKhvb+dOTQfi+mWO3zAgMB" & vbNewLine
+	sPKCS7=sPKCS7 & "AAGjggI1MIICMTAOBgNVHQ8BAf8EBAMCBDAwRAYJKoZIhvcNAQkPBDcwNTAOBggq" & vbNewLine
+	sPKCS7=sPKCS7 & "hkiG9w0DAgICAIAwDgYIKoZIhvcNAwQCAgCAMAcGBSsOAwIHMAoGCCqGSIb3DQMH" & vbNewLine
+	sPKCS7=sPKCS7 & "MB0GA1UdDgQWBBSt0ydq8zzFkmHTctlfe1dzHvg5ojATBgNVHSUEDDAKBggrBgEF" & vbNewLine
+	sPKCS7=sPKCS7 & "BQcDAjAfBgNVHSMEGDAWgBQNstAOSNsb26jwsjwAPmUMolKxHTCBnAYDVR0fBIGU" & vbNewLine
+	sPKCS7=sPKCS7 & "MIGRMIGOoIGLoIGIhkJodHRwOi8vaS1iYW5rMDAyLm1hc3Rlci5pbnRlcm5hbC9D" & vbNewLine
+	sPKCS7=sPKCS7 & "ZXJ0RW5yb2xsL0V1cm9tZXQlMjBQb3NpdGlvbi5jcmyGQmZpbGU6Ly9cXGktYmFu" & vbNewLine
+	sPKCS7=sPKCS7 & "azAwMi5tYXN0ZXIuaW50ZXJuYWxcQ2VydEVucm9sbFxFdXJvbWV0IFBvc2l0aW9u" & vbNewLine
+	sPKCS7=sPKCS7 & "LmNybDCB5AYIKwYBBQUHAQEEgdcwgdQwaAYIKwYBBQUHMAKGXGh0dHA6Ly9pLWJh" & vbNewLine
+	sPKCS7=sPKCS7 & "bmswMDIubWFzdGVyLmludGVybmFsL0NlcnRFbnJvbGwvaS1iYW5rMDAyLm1hc3Rl" & vbNewLine
+	sPKCS7=sPKCS7 & "ci5pbnRlcm5hbF9FdXJvbWV0JTIwUG9zaXRpb24uY3J0MGgGCCsGAQUFBzAChlxm" & vbNewLine
+	sPKCS7=sPKCS7 & "aWxlOi8vXFxpLWJhbmswMDIubWFzdGVyLmludGVybmFsXENlcnRFbnJvbGxcaS1i" & vbNewLine
+	sPKCS7=sPKCS7 & "YW5rMDAyLm1hc3Rlci5pbnRlcm5hbF9FdXJvbWV0IFBvc2l0aW9uLmNydDANBgkq" & vbNewLine
+	sPKCS7=sPKCS7 & "hkiG9w0BAQUFAAOCAQEAHrE35aP7+2hxMmZVu2lUrirccUcm2C6v/7N53FoKc2l8" & vbNewLine
+	sPKCS7=sPKCS7 & "+yknQNV7dVtkdbo9va0OZTC/iYmDIrT/dpMBenHwpD0ylv+Ut1ZAWdp6ldM16sR8" & vbNewLine
+	sPKCS7=sPKCS7 & "KX4j5e0PGImpVW8dVfCfgM+o+2gbCVaUN1kRzr6mfOfcJDiQsWhvJ9LwXKBEEcFk" & vbNewLine
+	sPKCS7=sPKCS7 & "FUp1exg6nQuHuer41MB5z7wFc38bSPEM7c4m5gmYd5H1E61AUpKy0jWBh8pWUG5j" & vbNewLine
+	sPKCS7=sPKCS7 & "7nX2ZLSJK6I6vZXJtojxdU2PCbrhw9hH/EJV8SowZ/Qoji32DGkNLGsm8UMuCSnO" & vbNewLine
+	sPKCS7=sPKCS7 & "bOvsQ80GE6VkO9brWxvvkkxd78IrNf65sqJ+3yky5DGCAZYwggGSAgEBMC8wGzEZ" & vbNewLine
+	sPKCS7=sPKCS7 & "MBcGA1UEAxMQRXVyb21ldCBQb3NpdGlvbgIQe7GNtqjNU5hFo4z70Kyh0DAJBgUr" & vbNewLine
+	sPKCS7=sPKCS7 & "DgMCGgUAoD4wFwYJKoZIhvcNAQkDMQoGCCsGAQUFBwwDMCMGCSqGSIb3DQEJBDEW" & vbNewLine
+	sPKCS7=sPKCS7 & "BBQDjeOE5mC8cAsQly4v5a0ojB607DANBgkqhkiG9w0BAQEFAASCAQCA+qcLLhFs" & vbNewLine
+	sPKCS7=sPKCS7 & "Daai3yjzyDHqWLGiQkasM2PNDtiu2vaQuV33anxL2VJ80MRob/3Pqroe5KagWRfi" & vbNewLine
+	sPKCS7=sPKCS7 & "pzpHw9Dg+6l6ZQ6w/y7LQXVtnV7GF95wejKWQZWIhCtWgp+aYi36k5nnlte3DWRM" & vbNewLine
+	sPKCS7=sPKCS7 & "t798kmI2brJwHoMStbo3eiZomjHWU9J48mkckEGvULzC8LtUX5v3x5dxdRGs/u0u" & vbNewLine
+	sPKCS7=sPKCS7 & "IDjsuIuRRJeWqXYGAJj/YrCoBXIaNOjXczUurnRr4RA/13upnx8vKxLqThzp//rP" & vbNewLine
+	sPKCS7=sPKCS7 & "+jid3KoR2UtODTXxlQmXoTbZEYxRCLKSeGlPLcrwfxOVlUO75yEgzDI8pZ8jN5+S" & vbNewLine
+	sPKCS7=sPKCS7 & "oN1vItQVbfLF" & vbNewLine
+
+</Script>
+
+<Script Language="VBScript">
+	
+	'-----------------------------------------------------------------
+	' Install the certificate
+	Sub Install()
+
+		Dim sMessage
+		On Error Resume Next
+
+		If False=g_bOkToInstall Then
+			Alert L_StillLoading_ErrorMessage
+			Exit Sub
+		End If
+		
+		
+
+		XEnroll.SPCFileName=""
+		XEnroll.acceptResponse(sPKCS7)
+
+		If 0=Err.Number Or &H80095001=Err.Number Then
+			If &H80095001=Err.Number Then
+				'inform user about root cert install failure
+				Alert L_CannotAddRoot_ErrorMessage
+			End If
+			' Certificate has been successfully installed. Go to 'success' page
+			markInstalled
+			document.SubmittedData.submit
+		Else
+			If Err.Number=&H80092004 Then 'CRYPT_E_NOT_FOUND
+				' the private key was not found - most likely this is an attempt to reinstall
+				sMessage=L_NoPrivKey_ErrorMessage
+			ElseIf Err.Number=&H800704C7 Then 'ERROR_CANCELLED
+                                ' The operation was canceled by the user.
+                                sMessage=L_Cancelled_ErrorMessage
+			Else
+				' unknown error
+				sMessage=evalErrorMessage("0x" & Hex(Err.Number))
+			End If
+			'don't popup if cancel, downlevel OS such as NT4 returns H80070002 in case of dlg cancel
+			If &H800704c7<>Err.Number And &H8010006e<>Err.Number And &H80070002<>Err.Number Then
+				Alert sMessage
+			End If
+			
+			' give the user the option to remove this broken cert from their list
+			spnRmpn.style.display=""
+			
+		End If
+		
+	End Sub
+</Script>
+
+
+
+</Body>
+</HTML>

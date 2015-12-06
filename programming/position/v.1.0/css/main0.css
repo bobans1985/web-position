@@ -1,0 +1,573 @@
+BODY, H1, H2, H3, H4, TABLE, TH, UL, P, OL, LI, .DivD, .DivL, .DivDHead, .DivLHead, .RowSel, .Txt11, .UserInfo, #PopUpMessID, .NavigtInfo *
+{FONT-FAMILY: 'Arial CYR', 'Arial Cyr', Arial, 'MS Sans Serif', sans-serif, Helvetica;}
+
+H1,H2,H3{
+MARGIN: 0 px;
+PADDING: 10 0 10 0 px;
+TEXT-ALIGN: center;
+}
+
+H1{
+FONT-SIZE: 180%;
+FONT-WEIGHT: 700;
+}
+H2{
+FONT-SIZE: 150%;
+FONT-WEIGHT: 700;
+PADDING: 10 0 6 0 px;
+}
+H3{
+FONT-SIZE: 130%;
+FONT-WEIGHT: 400;
+PADDING: 8 0 4 0 px;
+}
+H4{FONT-SIZE: 120%;}
+BODY, TR, TD, TH, UL, P, OL, LI, .TXT
+{FONT-SIZE: 12px;}
+#NOTE {FONT-SIZE: 11px;}
+
+/* Print Styles */
+#xslPrintTarget {PADDING: 0; MARGIN: 0;}
+#DR {
+ PADDING: 0px; MARGIN: 0px;
+}
+/* End of Print Styles */
+
+.NavigtInfo {display: block;}
+.NavigtInfo * {FONT-SIZE: 12px; FONT-WEIGHT: 400; text-decoration: none;}
+.UserInfo {FONT-SIZE: 16px; FONT-WEIGHT: 700;}
+
+TH {TEXT-ALIGN: center;}
+#ST, #ND, .ND, #COLIDR, #FORTPL, #FORMBLOCK, #VIEWBLOCK {Display: none;}
+#DivGlobalID {Display: none;}
+#PrintView {visibility: hidden;}
+PRE{
+FONT-SIZE: 12px;
+PADDING: 4 6 px;
+MARGIN: 0px;
+BORDER: 1px solid;
+}
+
+#ERT {MARGIN: 0 0 8 0 px;}
+#ERC {Display: none;}
+#ERMHEAD {PADDING: 0 0 8 0 px;}
+#ERMADD {FONT-SIZE: 11px; PADDING: 0 0 3 8 px;}
+#ERRORTD {MARGIN: 0 0 0 0 px;}
+#INFOMESS {MARGIN: 80 0 0 0px;}
+#UNDEFERROR {MARGIN: 20 0 px;}
+
+/* Standart Error Lines Styles */
+#ErrMsgBlock0{MARGIN: 30px 0 0 45px;}
+.ErrUndefined{margin: 5px;}
+.ErrMsgH50{margin: 0em 0em 0.5em 0em; Font-Size:150%;}
+.ErrMsgLine{width: 100%;}
+.ErrMsgLMargin{margin: 0.2em 0em 0em 0em;}
+.ErrMsgLMargin9{margin: 0em;}
+.ErrMsgH0{padding: 0px; margin: 0.7em 0em 0.5em 0em; font-weight: 700;}
+.ErrMsgH01{padding: 0px; margin: 0.7em 0em 0.0em 0em; font-weight: 700;}
+.ErrBullet, .ErrBullet8 {height: 25px; width: 25px; overflow: hidden; padding: 0.2em 0ex 0ex 0ex; margin: 0px;float: left; 
+/* position: relative;*/
+}
+.ErrBullet8{margin: 0px 0px 0px -2px;}
+.ErrMsg{padding: 0 0 0 16px;  margin: 0px;}
+.ErrMsgMoreInfoSwitch, .ErrMsgMoreInfoText, .ErrMsg9{Font-Size:90%; padding: 0 0 0 19px; margin: 0px;}
+.ErrMsgLP{padding-left: 0px;}
+.ErrMsgMoreInfoSwitch{text-decoration: underline;}
+/* END */
+
+.BadXML{MARGIN: 3 px;}
+.BadXMLH{FONT-WEIGHT: 700; MARGIN: 0 0 3 0 px;}
+
+FORM {MARGIN: 0px; PADDING: 0px;}
+
+.DivDHead, .DivLHead
+{FONT-SIZE: 12px;}
+.DivDHead
+{FONT-WEIGHT: bold;}
+
+.DivL, .DivD, .RowUnSel, .RowSel
+{CURSOR: default; FONT-SIZE: 12px;}
+
+.IssAct,.Iss,.IssEnd,.IssActEnd
+{FONT-SIZE: 12px; font-weight: bold; text-align: center;
+PADDING: 2 0 0 0 px; MARGIN: 0 px; height: 21px;
+BORDER-BOTTOM: 1px solid;
+}
+.IssAct,.IssEnd,.IssActEnd
+{cursor: default;}
+.IssAct
+{BORDER: 2px solid; PADDING: 0 px;}
+.IssActEnd
+{BORDER-BOTTOM: 0px;}
+.IssLine
+{width: 1px; height: 21px;}
+
+.Cel,.CelTL,.CelTR,.CelT,.CelTB {BORDER-TOP: 1px solid;}
+.Cel,.CelB,.CelBL,.CelRBL,.CelTB {BORDER-BOTTOM: 1px solid;}
+.Cel,.CelR,.CelRL,.CelRBL,.CelTR {BORDER-RIGHT: 1px solid;}
+.Cel,.CelL,.CelRL,.CelBL,.CelTL,.CelRBL {BORDER-LEFT: 1px solid;}
+
+INPUT, SELECT, TEXTAREA, BUTTON,.Inp, .InpB, .InpBtn, .InpDsbD, .InpDsbD0, .InpDsbD0T, .ISO
+{FONT-FAMILY: 'Arial CYR', 'Arial Cyr', Arial, MS Sans Serif, sans-serif; FONT-SIZE: 12px;}
+INPUT, SELECT {HEIGHT: 20px;}
+.InpB
+{MARGIN: 0 1 px;}
+.InpDsbD0, .ISO
+{BORDER: 1px solid; HEIGHT: 20px;}
+.InpDsbD0T
+{BORDER: 1px; VERTICAL-ALIGN: top;}
+.InpBtn
+{MARGIN: 2 5 px;}
+.InpBtn,.InpB,.act
+{FONT-WEIGHT: bold;}
+
+.InpF{
+FONT-SIZE: 12px;
+HEIGHT: 20px;
+FONT-FAMILY: 'Arial CYR', 'Arial Cyr', Arial;
+}
+
+.ISO
+{overflow: hidden;}
+
+.ISO, BUTTON
+{MARGIN-TOP: 1px;}
+
+SPAN, INPUT, SELECT, OBJECT, TEXTAREA
+{VERTICAL-ALIGN: middle;}
+
+.SCrollTBL, .StmTBL
+{
+border-collapse: collapse;
+table-layout: fixed;
+}
+
+.FORMHEADER{FONT-WEIGHT: bold;}
+
+.FotmTBL
+{
+border-collapse: collapse;
+BORDER: 1px solid;
+}
+.Txt11, #PopUpMessID, .SHcolumn
+{
+FONT-SIZE: 11px;
+MARGIN: 5 0 12 0 px;
+PADDING-RIGHT: 0px;
+}
+
+#PopUpMessID
+{
+MARGIN-TOP :10px;
+height: 15px;
+}
+
+#ScrollHeader,.FORMHEADER
+{
+MARGIN-TOP: 0px;
+margin-bottom: 3px;
+FONT-WEIGHT: bold;
+font-size: 16px;
+}
+
+.RptFld
+{
+BORDER: 1px solid;
+FONT-WEIGHT: normal;
+PADDING: 2 3 px;
+OVERFLOW: hidden;
+}
+.RptFldSgn1
+{HEIGHT: 12px; MARGIN: 3 0 3 3 px;}
+.RptFldSgn2
+{MARGIN: 0 0 2 3 px;}
+
+#WaitMes
+{
+FONT-SIZE: 14px;
+font-weight: 400;
+height: 20px;
+text-align: left;
+padding: 0 0 0 10 px;
+margin:0 0 0 0px
+}
+
+.ACTBTN, .DICTBTN, #CHECKBIC, #WAITIMG {HEIGHT: 20px; vertical-align: top; text-align: center;}
+.ACTBTN {FONT-SIZE: 10px; FONT-FAMILY: 'Arial CYR', 'Arial Cyr', Arial;}
+.DICTBTN {FONT-SIZE: 12px; FONT-FAMILY: 'Symbol'; WIDTH: 15px;}
+#CHECKBIC, #WAITIMG {FONT-SIZE: 12px; FONT-FAMILY: 'Symbol'; WIDTH: 18px; PADDING: 0 1 1 0px;}
+.ICOBTN,.INSTODICT{height:20px; width:20px; vertical-align:middle;}
+
+.RedA
+{
+FONT-SIZE: inherit;
+FONT-FAMILY: inherit;
+FONT-WEIGHT:bold;
+TEXT-DECORATION:underline;
+}
+
+#AIM {behavior:url(../htc/activeimg.htc) }
+#FILTERICO {behavior:url(../htc/filterico.htc) }
+#PAGEBAR {behavior:url(../htc/pagebar.htc) }
+#RecordsCountInfo,#Rc0 {behavior:url(../htc/recordscountinfo.htc) }
+#SHcolSwch {behavior:url(../htc/shcolswch.htc) }
+.SORTLNK, #SORTLNK {behavior:url(../htc/sortlnk.htc) }
+.TBICO {behavior:url(../htc/icon.htc) }
+.clsEval {behavior:url(../htc/eval.htc) }
+.MLF {behavior:url(../htc/win.htc) }
+.HELP {behavior:url(../htc/help.htc)}
+.INSTODICT {behavior:url(../htc/instodict.htc)}
+
+
+#s5,#i5{WIDTH:5px;}
+#s15r,#s15,#i15 {WIDTH:15px;}
+#s17r,#s17,#i17 {WIDTH:17px;}
+#s20r,#s20,#i20 {WIDTH:20px;}
+#s23r,#s23,#i23 {WIDTH:23px;}
+#s25r,#s25,#i25 {WIDTH:25px;}
+#s30r,#s30,#i30 {WIDTH:30px;}
+#s32r,#s32,#i32 {WIDTH:32px;}
+#s35r,#s35,#i35 {WIDTH:35px;}
+#s37r,#s37,#i37 {WIDTH:37px;}
+#s40r,#s40,#i40 {WIDTH:40px;}
+#s42r,#s42,#i42 {WIDTH:42px;}
+#s45r,#s45,#i45 {WIDTH:45px;}
+#s47r,#s47,#i47 {WIDTH:47px;}
+#s50r,#s50,#i50 {WIDTH:50px;}
+#s51r,#s51,#i51 {WIDTH:51px;}
+#s55r,#s55,#i55 {WIDTH:55px;}
+#s60r,#s60,#i60 {WIDTH:60px;}
+#s63r,#s63,#i63 {WIDTH:63px;}
+#s65r,#s65,#i65 {WIDTH:65px;}
+#s70r,#s70,#i70 {WIDTH:70px;}
+#s75r,#s75,#i75 {WIDTH:75px;}
+#s80r,#s80,#i80 {WIDTH:80px;}
+#s85r,#s85,#i85 {WIDTH:85px;}
+#s90r,#s90,#i90 {WIDTH:90px;}
+#s95r,#s95,#i95 {WIDTH:95px;}
+#s100r,#s100,#i100 {WIDTH:100px;}
+#s105r,#s105,#i105 {WIDTH:105px;}
+#s110r,#s110,#i110 {WIDTH:110px;}
+#s115r,#s115,#i115 {WIDTH:115px;}
+#s120r,#s120,#i120 {WIDTH:120px;}
+#s125r,#s125,#i125 {WIDTH:125px;}
+#s130r,#s130,#i130 {WIDTH:130px;}
+#s132r,#s132,#i132 {WIDTH:132px;}
+#s135r,#s135,#i135 {WIDTH:135px;}
+#s140r,#s140,#i140 {WIDTH:140px;}
+#s145r,#s145,#i145 {WIDTH:145px;}
+#s150r,#s150,#i150 {WIDTH:150px;}
+#s155r,#s155,#i155 {WIDTH:155px;}
+#s160r,#s160,#i160 {WIDTH:160px;}
+#s165r,#s165,#i165 {WIDTH:165px;}
+#s170r,#s170,#i170 {WIDTH:170px;}
+#s172r,#s172,#i172 {WIDTH:172px;}
+#s175r,#s175,#i175 {WIDTH:175px;}
+#s180r,#s180,#i180 {WIDTH:180px;}
+#s185r,#s185,#i185 {WIDTH:185px;}
+#s184r,#s184,#i184 {WIDTH:184px;}
+#s190r,#s190,#i190 {WIDTH:190px;}
+#s194r,#s194,#i194 {WIDTH:193px;}
+#s195r,#s195,#i195 {WIDTH:195px;}
+#s200r,#s200,#i200 {WIDTH:200px;}
+#s205r,#s205,#i205 {WIDTH:205px;}
+#s210r,#s210,#i210 {WIDTH:210px;}
+#s220r,#s220,#i220 {WIDTH:220px;}
+#s225r,#s225,#i225 {WIDTH:225px;}
+#s230r,#s230,#i230 {WIDTH:230px;}
+#s235r,#s235,#i235 {WIDTH:235px;}
+#s240r,#s240,#i240 {WIDTH:240px;}
+#s242r,#s242,#i242 {WIDTH:242px;}
+#s245r,#s245,#i245 {WIDTH:245px;}
+#s265r,#s265,#i265 {WIDTH:265px;}
+#s270r,#s270,#i270 {WIDTH:270px;}
+#s275r,#s275,#i275 {WIDTH:275px;}
+#s280r,#s280,#i280 {WIDTH:280px;}
+#s284r,#s284,#i284 {WIDTH:284px;}
+#s285r,#s285,#i285 {WIDTH:285px;}
+#s295r,#s295,#i295 {WIDTH:295px;}
+#s305r,#s305,#i305 {WIDTH:305px;}
+#s315r,#s315,#i315 {WIDTH:315px;}
+#s325r,#s325,#i325 {WIDTH:325px;}
+#s355r,#s355,#i355 {WIDTH:355px;}
+#s380r,#s380,#i380 {WIDTH:380px;}
+#s385r,#s385,#i385 {WIDTH:385px;}
+#s415r,#s415,#i415 {WIDTH:415px;}
+#s440r,#s440,#i440 {WIDTH:440px;}
+#s490r,#s490,#i490 {WIDTH:490px;}
+#s540r,#s540,#i540 {WIDTH:540px;}
+#s575r,#s575,#i575 {WIDTH:575px;}
+
+#s20r,#s23r,#s25r,#s30r,#s32r,#s35r,#s37r,#s40r,#s42r,#s45r,#s47r,#s50r,#s55r,#s60r,#s65r,#s70r,#s75r,#s80r,#s85r,#s90r,#s95r,#s100r,#s105r,#s110r,#s115r,#s120r,#s125r,#s130r,#s135r,#s140r,#s145r,#s150r,#s155r,#s160r,#s165r,#s170r,#s172r,#s175r,#s180r,#s184r,#s185r,#s194r,#s195r,#s200r,#s205r,#s210r,#s220r,#s225r,#s235r,#s240r,#s245r,#s270r,#s275r,#s285r,#s295r,#s305r,#s315r,#s325r,#s355r,#s380r,#s385r,#s490r,#s575r{TEXT-ALIGN: right;}
+
+#FHid {display: none;}
+
+.HT1 {
+  FONT-SIZE:2mm;
+  FONT-WEIGHT:bold;
+  VERTICAL-ALIGN:top;
+  TEXT-ALIGN:left;
+  WIDTH:40mm;
+}
+
+.HT2 {
+  HEIGHT:6mm;
+}
+.HT3 {
+  FONT-SIZE:4mm;
+  FONT-WEIGHT:bold;
+  TEXT-ALIGN:right;
+  VERTICAL-ALIGN:center;
+  WIDTH:88mm;
+}
+
+.HT4 {
+  FONT-SIZE:4mm;
+  FONT-WEIGHT:normal;
+  TEXT-ALIGN:left;
+  VERTICAL-ALIGN:bottom;
+  PADDING-LEFT:3mm;
+  WIDTH:40mm;
+}
+
+.LTC {
+  FONT-SIZE:2.6mm;
+  PADDING-LEFT:1mm;
+  BORDER-LEFT:1px solid;
+  BORDER-TOP:1px solid;
+  VERTICAL-ALIGN:middle;
+}
+
+.RTC {
+  FONT-SIZE:2.6mm;
+  PADDING-LEFT:2mm;
+  BORDER-LEFT:1px solid;
+  BORDER-TOP:1px solid;
+  BORDER-RIGHT:1px solid;
+  VERTICAL-ALIGN:middle;
+}
+
+.STC {
+  FONT-SIZE:2.6mm;
+  FONT-WEIGHT:bold;
+  BORDER-LEFT:1px solid;
+  BORDER-TOP:1px solid;
+  VERTICAL-ALIGN:middle;
+  TEXT-ALIGN:center;
+}
+
+.LTS {
+  PADDING-LEFT:0mm;
+  BORDER-LEFT:1px solid;
+  BORDER-TOP:1px solid;
+}
+
+.LTSI {
+  FONT-SIZE:2.6mm;
+  PADDING-LEFT:2mm;
+  PADDING-TOP:0mm;
+}
+
+.RTS {
+  PADDING-LEFT:0mm;
+  BORDER-LEFT:1px solid;
+  BORDER-TOP:1px solid;
+  BORDER-RIGHT:1px solid;
+}
+
+.ITCB {
+  FONT-SIZE:2.6mm;
+  FONT-WEIGHT:bold;
+  VERTICAL-ALIGN:middle;
+  TEXT-ALIGN:center;
+  BORDER-LEFT:1px solid;
+  BORDER-TOP:1px solid;
+  BORDER-BOTTOM:1px solid;
+  HEIGHT:6mm;
+  WIDTH:5.2mm;
+}
+
+.ITC {
+  FONT-SIZE:2.6mm;
+  FONT-WEIGHT:bold;
+  VERTICAL-ALIGN:middle;
+  TEXT-ALIGN:center;
+  BORDER-LEFT:1px solid;
+  HEIGHT:6mm;
+  WIDTH:5.42mm;
+}
+
+.CBX {
+  BORDER-LEFT:1px solid;
+  BORDER-TOP:1px solid;
+  BORDER-BOTTOM:3px solid;
+  BORDER-RIGHT:3px solid;
+  FONT-SIZE:2.6mm;
+  FONT-WEIGHT:bold;
+  TEXT-ALIGN:center;
+}
+
+.SC {
+  PADDING-LEFT:2mm;
+  FONT-SIZE:2.6mm;
+  FONT-WEIGHT:normal;
+  VERTICAL-ALIGN: bottom;
+  HEIGHT:19.5mm;
+}
+.SC1 {
+  WIDTH:60mm;
+  BORDER-BOTTOM:1.5mm solid;
+}
+.SC2 {
+  WIDTH:75mm;
+  BORDER-BOTTOM:1.5mm solid;
+}
+.SC3 {
+  WIDTH:32mm;
+  BORDER-BOTTOM:1.5mm solid;
+}
+
+.LT1 {
+  FONT-WEIGHT:normal;
+  FONT-SIZE:3.2mm;
+  TEXT-ALIGN:center;
+}
+
+.LT2 {
+  FONT-WEIGHT:normal;
+  FONT-SIZE:3.2mm;
+  WIDTH:60mm;
+}
+
+.LT3 {
+  WIDTH:47mm;
+}
+
+.RMS {
+  VERTICAL-ALIGN:top;
+  TEXT-ALIGN:center;
+  FONT-SIZE:1.5mm;
+  WIDTH:2mm;
+}
+
+.RMT {
+  VERTICAL-ALIGN:bottom;
+  TEXT-ALIGN:left;
+  FONT-SIZE:2mm;
+}
+
+#xslFormTarget .FDWNL, #xslViewTarget .FVIEW {display:inline;}
+#xslViewTarget .FDWNL{display:none;}
+
+#xslViewTarget .FNAM {display:inline;}
+#xslFormTarget .FNAM {display:none;}
+
+
+#SH,#SHH {PADDING: 4 0 0 0 px;}
+#sH0 {WIDTH:592px; PADDING: 0 2 0 2 px; MARGIN: -2 -2 0 -2 px;}
+#sH1 {WIDTH:250px; FONT-WEIGHT: bold;}
+#sH2 {WIDTH:325px; FONT-SIZE: 11px;}
+#sHA {FONT-WEIGHT: bold; TEXT-DECORATION: underline;}
+#sHR {HEIGHT: 10px; overflow: hidden; MARGIN: 2 -2 2 -2 px;}
+#sH2 {TEXT-ALIGN: right;}
+
+#ScP1 {font-size: 3.0mm; font-weight: bold}
+#ScP2 {font-size: 2.5mm}
+#ScP3 {font-size: 9px;}
+
+#PrnKvit *{font-family:'Times New Roman'; font-size: 13px;}
+
+.ToolImg{border: 1px solid;}
+.ToolImg,.ToolImg_A,.ToolImg_D{width:35px;height:35px;}
+.ToolImg_A,.ToolImg_D{border: 1px solid;}
+.ToolImg_A{border-style : outset;}
+.ToolImg_D{border-style : inset;}
+.TImg_A{position:relative;top:0;left:0;}
+.TImg_B{position:relative;top:1;left:1;}
+
+#d {border-bottom: 1px solid;}
+.calTbl{width: 160px; cursor: default; border-style:solid;}
+#md {cursor: default;}
+
+#SHFltrIco {
+	width:16px;
+	height:16px;
+	vertical-align:bottom;
+}
+.DivDHead, #FilterHeader, .StatusTR {
+	height:20px;
+	padding-left:5px;
+}
+#VSubTitle {font-weight: bold; padding: 5px; text-align: left;}
+#FltrBtnTD {
+	text-align:center;
+	vertical-align:middle;
+	border-left: 1px solid;
+}
+
+.AddInf {font-size: 11px; padding: 5px; margin-top: 0px; margin-bottom: 3px;}
+.SCrollTBL THEAD TD, .StmTBL THEAD TD {border-right: 1px solid; text-align: center;}
+.SCrollTBL THEAD TD.lastTH {border-right: 0px;}
+.SCrollTBL THEAD TD.topTH {border-right: 0px; border-bottom: 1px solid; text-align: right;}
+#FilterBody {border-width: 0 1 1 1px; border-style: solid;}
+.Pager,.lnk {text-decoration: underline;}
+BUTTON, .Btn, INPUT, TEXTAREA,.ldWrkScr {border: 1px solid;}
+BUTTON, .Btn {vertical-align: bottom;}
+#FilterBody BUTTON.Btn{width:87px;}
+.rb {width: 20px;}
+.rb,.ldWrk{ border: none;}
+.shad{
+	filter:Gray();
+	cursor: default;
+}
+.noshad{}
+
+.stdBtn{width:105px}
+.ldInp{margin:5 0;width:200px}
+.ldWrkScr{text-align:left;width:440px;height:65px;overflow-y:scroll}
+#pbr TD{width:10px}
+TD #txt{font-size:16px;}
+TD #txi{width:100%;padding-left:10px;}
+#EDITFORM TR.DivL TD {padding: 4px;}
+
+.ErrMsgMoreInfoSwitch, .Iss,
+.RedA,.FDWNL,
+#xslFormTarget .FDWNL, #xslViewTarget .FVIEW,
+#sHA,#SHFltrIco,.Pager,.lnk,
+.ICOBTN,.INSTODICT,BUTTON,
+.rb,.TImg_A,.RowUnSel,.dayA
+{cursor: hand;}
+#SESSCLS{padding-left:10px;}
+.sep {height: 0px; border-bottom: 1px solid black; padding-top: 7px;}
+
+#stamp {border: 1.5mm solid #808080; background-color: #FFFFFF; width: 55mm; height: 34mm; overflow: hidden; word-break: break-all; text-align: center;}
+#stamp_fields * {color: #808080; font-weight: bold;}
+#stamp_deb_info {position: absolute; top: 10px; left: 10px;}
+
+#NumCol {text-align: right; word-break: break-all; font-size: 10px;}
+
+a:Link
+{
+text-decoration: none;
+color: #000000;
+}
+
+a:Visited
+{
+text-decoration: none;
+color: #000000;
+}
+
+a:Active
+{
+text-decoration: none;
+color: #000000;
+}
+
+a:Hover
+{
+text-decoration: underline;
+color: #FF6600;
+}
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/auth.php" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/details.php" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/index.php" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/js" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/programming" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/templates" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/templates/details_sql.php" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Позиция СЕРТИФИКАТЫ WEB" charset="windows-1251" />
+    <file url="PROJECT" charset="windows-1251" />
+  </component>
+</project>

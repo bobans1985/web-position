@@ -5,15 +5,15 @@ if (empty($_GET['prev']))
 else
     $str_day_dynamic="sysdate-1";
 
-//Зачисленные платежи--------------------------------------------------------
- $title1="Зачисленные платежи";
+//Р—Р°С‡РёСЃР»РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё--------------------------------------------------------
+ $title1="Р—Р°С‡РёСЃР»РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё";
  $sql1 = "select 
 		BNK.iBNKdocnum   doc_num, 
                 to_Char(BNK.mBNKsum,'fm999g999g999g999g990d00') amount,
-		Decode(BNK.cBNKdc,'Т',BNK.cBNKnamea,BNK.cBNKnameo)       client_name, 
-		Decode(BNK.cBNKdc,'Т',BNK.cBNKacca,BNK.cBNKoriginalacco) client_acc, 
-		Decode(BNK.cBNKdc,'К',BNK.cBNKacca,BNK.cBNKoriginalacco) corr_acc, 
-		Decode(BNK.cBNKdc,'К',BNK.cBNKnamea,BNK.cBNKnameo)       corr_name, 
+		Decode(BNK.cBNKdc,'Рў',BNK.cBNKnamea,BNK.cBNKnameo)       client_name, 
+		Decode(BNK.cBNKdc,'Рў',BNK.cBNKacca,BNK.cBNKoriginalacco) client_acc, 
+		Decode(BNK.cBNKdc,'Рљ',BNK.cBNKacca,BNK.cBNKoriginalacco) corr_acc, 
+		Decode(BNK.cBNKdc,'Рљ',BNK.cBNKnamea,BNK.cBNKnameo)       corr_name, 
 		NVL(FOG.cFOGshortname,FOG.cFOGname)                      corr_bank_name, 
 		BNK.cBNKpurp     purpose
 			  from POT, 
@@ -26,12 +26,12 @@ else
 				        POT.iPOTportion between 1 and 5 and 
 				        POT.cPOTportion_type='A' and 
 				        BNK.iBNKportionid=POT.iPOTid and 
-				        BNK.cBNKdc in ('К','Т') and 
-				        FOG.cFOGmfo8(+)=Decode(BNK.cBNKdc,'К',BNK.cBNKmfoa,BNK.cBNKmfoo) and 
+				        BNK.cBNKdc in ('Рљ','Рў') and 
+				        FOG.cFOGmfo8(+)=Decode(BNK.cBNKdc,'Рљ',BNK.cBNKmfoa,BNK.cBNKmfoo) and 
 				        DVR.iDVRbnkid(+)=BNK.iBNKid";
 
-//Списанные платежи----------------------------------------------------------
-$title2="Списанные платежи";
+//РЎРїРёСЃР°РЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё----------------------------------------------------------
+$title2="РЎРїРёСЃР°РЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё";
 $sql2 = "select 
 		       TRN.iTRNdocnum doc_num,
 	               to_Char(TRN.mTRNsum ,'fm999g999g999g999g990d00') amount,
@@ -54,8 +54,8 @@ $sql2 = "select
 				        ACC.cACCcur=TRN.cTRNcur and
 				        CUS.iCUSnum=ACC.iACCcus";
 
-//Предварительные поступления------------------'-----------------------------
-$title3="Предварительные поступления";
+//РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рµ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ------------------'-----------------------------
+$title3="РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рµ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ";
 $sql3 = "select 
                 PS_PP_Prepayment.DOC_NUM,
 	        to_Char(PS_PP_Prepayment.AMOUNT,'fm999g999g999g999g990d00') amount,
@@ -75,8 +75,8 @@ $sql3 = "select
 				        portion_num=".$num."
 					order by amount desc";
 
-//Платежи к отправке----------------------------------------------------------
-$title4="Платежи к отправке";
+//РџР»Р°С‚РµР¶Рё Рє РѕС‚РїСЂР°РІРєРµ----------------------------------------------------------
+$title4="РџР»Р°С‚РµР¶Рё Рє РѕС‚РїСЂР°РІРєРµ";
 $sql4 ="select 
 	       TRN.iTRNdocnum doc_num, 
                to_Char(TRN.mTRNsum ,'fm999g999g999g999g990d00')   amount,
@@ -105,8 +105,8 @@ $sql4 ="select
 			        ACC.cACCacc=TRN.cTRNaccd and 
 			        ACC.cACCcur=TRN.cTRNcur and 
 			        CUS.iCUSnum=ACC.iACCcus";	
-//Отложенные платежи----------------------------------------------------------
-$title5="Отложенные платежи";
+//РћС‚Р»РѕР¶РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё----------------------------------------------------------
+$title5="РћС‚Р»РѕР¶РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё";
 $sql5= "select  
 		       DP_Doc.idocnum doc_num, 
 		       to_Char(DP_Doc.msumm,'fm999g999g999g999g990d00')   amount, 
@@ -125,8 +125,8 @@ $sql5= "select
 				        ACC.cACCcur=DP_Doc.ccur and 
 				        CUS.iCUSnum=ACC.iACCcus";
 
-//Выгруженные платежи----------------------------------------------------------
-$title6="Выгруженные платежи";
+//Р’С‹РіСЂСѓР¶РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё----------------------------------------------------------
+$title6="Р’С‹РіСЂСѓР¶РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё";
 $sql6= "select 
 	       TRN.iTRNdocnum doc_num, 
 	       to_Char(TRN.mTRNsum,'fm999g999g999g999g990d00')   amount,
@@ -163,8 +163,8 @@ $sql6= "select
 				        ACC.cACCacc=TRN.cTRNaccd and 
 				        ACC.cACCcur=TRN.cTRNcur and 
 				        CUS.iCUSnum=ACC.iACCcus";		
-//В реестре для МЦИ----------------------------------------------------------
-$title7="В реестре для МЦИ";
+//Р’ СЂРµРµСЃС‚СЂРµ РґР»СЏ РњР¦Р----------------------------------------------------------
+$title7="Р’ СЂРµРµСЃС‚СЂРµ РґР»СЏ РњР¦Р";
 $sql7= "select 
 	       TRN.iTRNdocnum doc_num, 
 	       to_Char(TRN.mTRNsum,'fm999g999g999g999g990d00')   amount,
@@ -201,8 +201,8 @@ $sql7= "select
 						        ACC.cACCcur=TRN.cTRNcur and 
 						        CUS.iCUSnum=ACC.iACCcus";
 
-//Принятые МЦИ платежи----------------------------------------------------------
-$title8="Принятые МЦИ платежи";
+//РџСЂРёРЅСЏС‚С‹Рµ РњР¦Р РїР»Р°С‚РµР¶Рё----------------------------------------------------------
+$title8="РџСЂРёРЅСЏС‚С‹Рµ РњР¦Р РїР»Р°С‚РµР¶Рё";
 $sql8= "select 
 		      TRN.iTRNdocnum doc_num, 
                      to_Char(TRN.mTRNsum,'fm999g999g999g999g990d00')   amount,
@@ -238,8 +238,8 @@ $sql8= "select
 				        CUS.iCUSnum=ACC.iACCcus";
 
 
-//В том числе по рейсам--------------------------------------------------------
-$title9="Рейсы";
+//Р’ С‚РѕРј С‡РёСЃР»Рµ РїРѕ СЂРµР№СЃР°Рј--------------------------------------------------------
+$title9="Р РµР№СЃС‹";
 $sql9= "select IPOTPORTION,
 	       to_Char(AMOUNT,'fm999g999g999g999g990d00')   amount, 
                COUNT
@@ -271,15 +271,15 @@ $sql9= "select IPOTPORTION,
              cPOTcur='RUR'
         order by iPOTportion";
 
-//Зачисленные платежи по рейсу--------------------------------------------------------
-$title10="Зачисленные платежи по рейсу № ".$num;
+//Р—Р°С‡РёСЃР»РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё РїРѕ СЂРµР№СЃСѓ--------------------------------------------------------
+$title10="Р—Р°С‡РёСЃР»РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё РїРѕ СЂРµР№СЃСѓ в„– ".$num;
 $sql10="select
                BNK.iBNKdocnum   doc_num,
 	       to_Char(BNK.mBNKsum,'fm999g999g999g999g990d00')   amount, 
-	       Decode(BNK.cBNKdc,'Т',BNK.cBNKacca,BNK.cBNKoriginalacco) client_acc,
-	       Decode(BNK.cBNKdc,'Т',BNK.cBNKnamea,BNK.cBNKnameo)       client_name,
-	       Decode(BNK.cBNKdc,'К',BNK.cBNKacca,BNK.cBNKoriginalacco) corr_acc,
-	       Decode(BNK.cBNKdc,'К',BNK.cBNKnamea,BNK.cBNKnameo)       corr_name,
+	       Decode(BNK.cBNKdc,'Рў',BNK.cBNKacca,BNK.cBNKoriginalacco) client_acc,
+	       Decode(BNK.cBNKdc,'Рў',BNK.cBNKnamea,BNK.cBNKnameo)       client_name,
+	       Decode(BNK.cBNKdc,'Рљ',BNK.cBNKacca,BNK.cBNKoriginalacco) corr_acc,
+	       Decode(BNK.cBNKdc,'Рљ',BNK.cBNKnamea,BNK.cBNKnameo)       corr_name,
 	       NVL(FOG.cFOGshortname,FOG.cFOGname)                      corr_bank_name,
    	       BNK.cBNKpurp     purpose
 		  from POT,
@@ -292,8 +292,8 @@ $sql10="select
 			        POT.iPOTportion=".$num." and
 			        POT.cPOTportion_type='A' and
 			        BNK.iBNKportionid=POT.iPOTid and
-			        BNK.cBNKdc in ('К','Т') and
-			        FOG.cFOGmfo8(+)=Decode(BNK.cBNKdc,'К',BNK.cBNKmfoa,BNK.cBNKmfoo) and
+			        BNK.cBNKdc in ('Рљ','Рў') and
+			        FOG.cFOGmfo8(+)=Decode(BNK.cBNKdc,'Рљ',BNK.cBNKmfoa,BNK.cBNKmfoo) and
 			        DVR.iDVRbnkid(+)=BNK.iBNKid";
 
 

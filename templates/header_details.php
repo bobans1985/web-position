@@ -1,7 +1,7 @@
 <?php if(!defined("IN_ADMIN")) die;   ?>
 <HTML>
 	<HEAD>
-		<title>Просмотр данных <----- Lite Позиция</title>
+		<title>РџСЂРѕСЃРјРѕС‚СЂ РґР°РЅРЅС‹С… <----- Lite РџРѕР·РёС†РёСЏ</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
 		<LINK REL="stylesheet" HREF="css/main.css" ID="MAINCSS">
 <script type="text/javascript" src="js/jquery-1.2.6.js"></script>
@@ -61,7 +61,7 @@ background-color: #8dbdd8;
   </TR>
   <TR>
     <TD align="center"><img src="images/vr.gif" width="7" height="20" ></TD>
-    <TD align="right" valign="middle" bgcolor="#E0F0F5"><a href="index.php<?php if (!empty($_GET['prev'])) echo "?prev=1";?>">На главную</a>
+    <TD align="right" valign="middle" bgcolor="#E0F0F5"><a href="index.php<?php if (!empty($_GET['prev'])) echo "?prev=1";?>">РќР° РіР»Р°РІРЅСѓСЋ</a>
 </TD>
     <TD align="center"><img src="images/vr.gif" width="7" height="20"  border="0"/></TD>
   </TR>

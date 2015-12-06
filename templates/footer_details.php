@@ -8,7 +8,7 @@
   </TR>
   <TR>
     <TD align="center"><img src="images/vr.gif" width="7" height="20" ></TD>
-    <TD align="right" valign="middle" bgcolor="#E0F0F5"><a href="index.php<?php if (!empty($_GET['prev'])) echo "?prev=1";?>">На главную</a>
+    <TD align="right" valign="middle" bgcolor="#E0F0F5"><a href="index.php<?php if (!empty($_GET['prev'])) echo "?prev=1";?>">РќР° РіР»Р°РІРЅСѓСЋ</a>
 </TD>
     <TD align="center"><img src="images/vr.gif" width="7" height="20"  border="0"/></TD>
   </TR>
@@ -35,7 +35,7 @@ $("#result").tablesorter({
 
 <script type="text/javascript">
 $(function() { 
-// ---- Встраиваем фильтр в детальный показ платежей -----
+// ---- Р’СЃС‚СЂР°РёРІР°РµРј С„РёР»СЊС‚СЂ РІ РґРµС‚Р°Р»СЊРЅС‹Р№ РїРѕРєР°Р· РїР»Р°С‚РµР¶РµР№ -----
   var theTable = $('table.tablesorter')
 
   theTable.find("tbody > tr").find("td:eq(1)").mousedown(function(){
@@ -50,7 +50,7 @@ $(function() {
     theTable.find("tbody > tr:visible > td:eq(1)").mousedown();
     return false;
   }).focus(); //Give focus to input field
-// ---- Встраиваем фильтр в детальный показ платежей -----
+// ---- Р’СЃС‚СЂР°РёРІР°РµРј С„РёР»СЊС‚СЂ РІ РґРµС‚Р°Р»СЊРЅС‹Р№ РїРѕРєР°Р· РїР»Р°С‚РµР¶РµР№ -----
 });  
 </script>
 

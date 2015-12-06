@@ -73,13 +73,13 @@ switch($_GET['id'])
 </TABLE>
 <br>
 
-<span class="viewsrc">Фильтр</span>
+<span class="viewsrc">Р¤РёР»СЊС‚СЂ</span>
 <div class="src">
 <TABLE class=tablesorter   width="100%" cellspacing=2 cellpadding=3 border=0>
 <THEAD>
   <TR>
     <TD  bgcolor="#e6EEEE">
-<form id="filter-form"><b>Автофильтр:</b> <input name="filter" id="filter" type="text" class="input" ></form>
+<form id="filter-form"><b>РђРІС‚РѕС„РёР»СЊС‚СЂ:</b> <input name="filter" id="filter" type="text" class="input" ></form>
 </TD>
   </TR>
 </THEAD>
@@ -100,34 +100,34 @@ switch($_GET['id'])
 					  switch($key)
 						{
 						case "AMOUNT" :
-						      $key="<th  width=70>Сумма</th>";
+						      $key="<th  width=70>РЎСѓРјРјР°</th>";
 						      break;
 						case "DOC_NUM" :
-						      $key="<th width=10>№</th>";
+						      $key="<th width=10>в„–</th>";
 						      break;
 					        case "CLIENT_NAME":
-						      $key="<th>Клиент</th>";
+						      $key="<th>РљР»РёРµРЅС‚</th>";
 						      break;
 					        case "CLIENT_ACC":
-						      $key="<th>Счет Клиента</th>";
+						      $key="<th>РЎС‡РµС‚ РљР»РёРµРЅС‚Р°</th>";
 						      break;
 					        case "CORR_NAME":
-						      $key="<th>Корреспондент</th>";
+						      $key="<th>РљРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС‚</th>";
 						      break;
 					        case "CORR_ACC":
-						      $key="<th>Счет Корреспондента</th>";
+						      $key="<th>РЎС‡РµС‚ РљРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС‚Р°</th>";
 						      break;
 					        case "CORR_BANK_NAME":
-						      $key="<th>Банк корреспондент</th>";
+						      $key="<th>Р‘Р°РЅРє РєРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС‚</th>";
 						      break;
 					        case "PURPOSE":
-						      $key="<th>Назначение платежа</th>";
+						      $key="<th>РќР°Р·РЅР°С‡РµРЅРёРµ РїР»Р°С‚РµР¶Р°</th>";
 						      break;
 					        case "COUNT":
-						      $key="<th>Документов</th>";
+						      $key="<th>Р”РѕРєСѓРјРµРЅС‚РѕРІ</th>";
 						      break;
 					        case "IPOTPORTION":
-						      $key="<th>№ Рейса</th>";
+						      $key="<th>в„– Р РµР№СЃР°</th>";
 						      break;
 
 
@@ -159,7 +159,7 @@ switch($_GET['id'])
 				echo "</tbody>\n<tfoot>\n<tr>\n</tr>\n</tfoot>\n</table>\n";
 			} else
 			{
-		       		echo "<br><br>Извините, но не могу найти данных<br />\n";
+		       		echo "<br><br>РР·РІРёРЅРёС‚Рµ, РЅРѕ РЅРµ РјРѕРіСѓ РЅР°Р№С‚Рё РґР°РЅРЅС‹С…<br />\n";
 			}    
 
 

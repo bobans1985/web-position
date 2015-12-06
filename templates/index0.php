@@ -3,7 +3,7 @@
 <HTML>
 	<HEAD>
 	
-		<title> Lite Позиция</title>		
+		<title> Lite РџРѕР·РёС†РёСЏ</title>		
 		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
                 <META HTTP-EQUIV="pragma" CONTENT="No-Cache">
 		<LINK REL="stylesheet" HREF="css/main.css" ID="MAINCSS">
@@ -25,7 +25,7 @@ window.event.returnValue=false;}
 				    var code = e.keyCode;
 				    if (ctrl && String.fromCharCode(code).match(/c/gi) != null) 
 					{
-				        alert("Запрещено от копирования <bobans>");   
+				        alert("Р—Р°РїСЂРµС‰РµРЅРѕ РѕС‚ РєРѕРїРёСЂРѕРІР°РЅРёСЏ <bobans>");   
 	        			}
                          }document.onkeydown = keydownhandler;
 		</script>
@@ -45,15 +45,15 @@ window.event.returnValue=false;}
         <tr>
           <td colspan="2" align="left" valign="top" bgcolor="#E0F0F5" class="Txt11"><table width="100%" border="0" cellpadding="2" cellspacing="2">
             <tr>
-              <td width="33%" bgcolor="#B4DAE7" class="Txt11" >Остаток на начало дня</td>
+              <td width="33%" bgcolor="#B4DAE7" class="Txt11" >РћСЃС‚Р°С‚РѕРє РЅР° РЅР°С‡Р°Р»Рѕ РґРЅСЏ</td>
               <td width="67%" bgcolor="#B4DAE7" class="Txt11"><b><?PHP echo $results['S_15'][0];?></b></td>
             </tr>
             <tr>
-              <td bgcolor="#B4DAE7" class="Txt11" >Текущий остаток</td>
+              <td bgcolor="#B4DAE7" class="Txt11" >РўРµРєСѓС‰РёР№ РѕСЃС‚Р°С‚РѕРє</td>
               <td bgcolor="#B4DAE7" class="Txt11"><b><?PHP echo $results['S_16'][0];?></b></td>
             </tr>
             <tr>
-              <td bgcolor="#B4DAE7" class="Txt11" >Плановый остаток</td>
+              <td bgcolor="#B4DAE7" class="Txt11" >РџР»Р°РЅРѕРІС‹Р№ РѕСЃС‚Р°С‚РѕРє</td>
               <td bgcolor="#B4DAE7" class="Txt11" ><b><?PHP echo $results['S_17'][0];?></b></td>
             </tr>
             <tr>
@@ -64,20 +64,20 @@ window.event.returnValue=false;}
             </td>
           <td width="412" class="Txt11" align="left" valign="top"><table width="100%" border="0" cellpadding="2" cellspacing="2">
               <tr>
-                <td width="33%" bgcolor="#B4DAE7" class="Txt11" >Банк Корреспондент: </td>
-                <td width="67%" bgcolor="#B4DAE7" class="Txt11">Отделение 4 московского ГТУ Банка России </td>
+                <td width="33%" bgcolor="#B4DAE7" class="Txt11" >Р‘Р°РЅРє РљРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС‚: </td>
+                <td width="67%" bgcolor="#B4DAE7" class="Txt11">РћС‚РґРµР»РµРЅРёРµ 4 РјРѕСЃРєРѕРІСЃРєРѕРіРѕ Р“РўРЈ Р‘Р°РЅРєР° Р РѕСЃСЃРёРё </td>
               </tr>
               <tr>
-                <td bgcolor="#B4DAE7" class="Txt11" >Валюта: </td>
+                <td bgcolor="#B4DAE7" class="Txt11" >Р’Р°Р»СЋС‚Р°: </td>
                 <td bgcolor="#B4DAE7" class="Txt11">RUR</td>
               </tr>
               <tr>
-                <td bgcolor="#B4DAE7" class="Txt11" >Кор. счет: </td>
+                <td bgcolor="#B4DAE7" class="Txt11" >РљРѕСЂ. СЃС‡РµС‚: </td>
                 <td bgcolor="#B4DAE7" class="Txt11" >30102810500000000194</td>
               </tr>
               <tr>
-                <td bgcolor="#B4DAE7" class="Txt11" >На дату: </td>
-                <td bgcolor="#B4DAE7" class="Txt11" ><?php   if (!empty($_GET['prev'])) {echo "<b>".$results['S_54'][0]." ----> <a href=index.php> на текущий день</a><b>";  } else echo "<b>".date("d.m.Y H:i:s")." ----> <a href=index.php?prev=1> на предыдущий день</a></b>"; ?>&nbsp;</td>
+                <td bgcolor="#B4DAE7" class="Txt11" >РќР° РґР°С‚Сѓ: </td>
+                <td bgcolor="#B4DAE7" class="Txt11" ><?php   if (!empty($_GET['prev'])) {echo "<b>".$results['S_54'][0]." ----> <a href=index.php> РЅР° С‚РµРєСѓС‰РёР№ РґРµРЅСЊ</a><b>";  } else echo "<b>".date("d.m.Y H:i:s")." ----> <a href=index.php?prev=1> РЅР° РїСЂРµРґС‹РґСѓС‰РёР№ РґРµРЅСЊ</a></b>"; ?>&nbsp;</td>
               </tr>
           </table></td>
         </tr>
@@ -85,8 +85,8 @@ window.event.returnValue=false;}
       <div align="center">
         <table width="100%" border="0" cellpadding="02" cellspacing="2" class="base_txt">
           <tr>
-            <td width="262" bgcolor="#B4DAE7" class="Txt11" ><strong>ОВП по долларам США: <?PHP echo $results['S_18'][0];?>&nbsp</strong></td>
-            <td width="362" bgcolor="#B4DAE7" class="Txt11" ><strong>ОВП по евро: <?PHP echo $results['S_19'][0];?>&nbsp</strong></td>
+            <td width="262" bgcolor="#B4DAE7" class="Txt11" ><strong>РћР’Рџ РїРѕ РґРѕР»Р»Р°СЂР°Рј РЎРЁРђ: <?PHP echo $results['S_18'][0];?>&nbsp</strong></td>
+            <td width="362" bgcolor="#B4DAE7" class="Txt11" ><strong>РћР’Рџ РїРѕ РµРІСЂРѕ: <?PHP echo $results['S_19'][0];?>&nbsp</strong></td>
           </tr>
         </table>
       </div>
@@ -113,9 +113,9 @@ window.event.returnValue=false;}
     <TD width="100%" height="100" align="right" valign="top"><div align="left">
       <table class="base_txt" width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td width="50%" bgcolor="#5FAEC9" class="Txt11" ><strong>&nbsp;&nbsp; Приход: <?PHP echo $results['S_14'][0];?>&nbsp</strong></td>
+          <td width="50%" bgcolor="#5FAEC9" class="Txt11" ><strong>&nbsp;&nbsp; РџСЂРёС…РѕРґ: <?PHP echo $results['S_14'][0];?>&nbsp</strong></td>
           <td bgcolor="#5FAEC9"><img src="loader/vr.gif" width="7" height="20"></td>
-          <td width="50%" bgcolor="#5FAEC9" class="Txt11" ><strong>&nbsp;&nbsp; Расход: <?PHP echo $results['S_13'][0];?>&nbsp</strong></td>
+          <td width="50%" bgcolor="#5FAEC9" class="Txt11" ><strong>&nbsp;&nbsp; Р Р°СЃС…РѕРґ: <?PHP echo $results['S_13'][0];?>&nbsp</strong></td>
         </tr>
         <tr>
           <td valign="top" bgcolor="#E0F5F1"><img src="images/hr.gif" width="100%" height="7" ></td>
@@ -125,15 +125,15 @@ window.event.returnValue=false;}
         <tr>
           <td align="left" valign="top" bgcolor="#E0F5F1"><table class="base_txt" width="100%" border="0" cellspacing="2" cellpadding="2">
               <tr>
-                <td bgcolor="#BBEAE0" class="Txt11" >Зачисленные платежи: </td>            
+                <td bgcolor="#BBEAE0" class="Txt11" >Р—Р°С‡РёСЃР»РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё: </td>            
                 <td width="150" bgcolor="#BBEAE0" class="Txt11" ><a href="details.php?id=1<?php if (!empty($_GET['prev'])) echo "&prev=1";?>"><?PHP echo $results['S_1'][0];?>&nbsp</a></td>
               </tr>
               <tr>
-                <td bgcolor="#BBEAE0" class="Txt11" >В том числе по рейсам: </td>
+                <td bgcolor="#BBEAE0" class="Txt11" >Р’ С‚РѕРј С‡РёСЃР»Рµ РїРѕ СЂРµР№СЃР°Рј: </td>
                 <td bgcolor="#BBEAE0" class="Txt11" ><a href="details.php?id=9<?php if (!empty($_GET['prev'])) echo "&prev=1";?>"><?PHP echo $results['S_2'][0];?>&nbsp</a></td>
               </tr>
               <tr>
-                <td bgcolor="#BBEAE0" class="Txt11" >Предварительные поступления: </td>
+                <td bgcolor="#BBEAE0" class="Txt11" >РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рµ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ: </td>
                 <td bgcolor="#BBEAE0" class="Txt11" ><a href="details.php?id=3&num=<?PHP if (!empty($results['S_4'][0])) echo substr($results['S_4'][0],5,1); else echo "1" ?><?php if (!empty($_GET['prev'])) echo "&prev=1";?>" ><?PHP echo $results['S_3'][0];?>&nbsp</a></td>
               </tr>
               <tr>
@@ -144,35 +144,35 @@ window.event.returnValue=false;}
           <td align="left" valign="top" bgcolor="#E0F5F1"><img src="images/vr.gif" width="7" height="180"></td>
           <td align="left" valign="top" bgcolor="#E0F5F1"><table class="base_txt" width="100%" border="0" cellspacing="2" cellpadding="2">
               <tr>
-                <td bgcolor="#BBEAE0" class="Txt11" >Списанные платежи: </td>
+                <td bgcolor="#BBEAE0" class="Txt11" >РЎРїРёСЃР°РЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё: </td>
                 <td width="150" bgcolor="#BBEAE0" class="Txt11" ><a href="details.php?id=2<?php if (!empty($_GET['prev'])) echo "&prev=1";?>"><?PHP echo $results['S_5'][0];?>&nbsp</a></td>
               </tr>
               <tr>
-                <td bgcolor="#BBEAE0" class="Txt11" >Отвергнутые платежи: </td>
+                <td bgcolor="#BBEAE0" class="Txt11" >РћС‚РІРµСЂРіРЅСѓС‚С‹Рµ РїР»Р°С‚РµР¶Рё: </td>
                 <td bgcolor="#BBEAE0" class="Txt11" ><?PHP echo $results['S_6'][0];?>&nbsp</td>
               </tr>
               <tr>
-                <td bgcolor="#BBEAE0" class="Txt11" >D-Макет: </td>
+                <td bgcolor="#BBEAE0" class="Txt11" >D-РњР°РєРµС‚: </td>
                 <td bgcolor="#BBEAE0" class="Txt11" ><?PHP echo $results['S_7'][0];?>&nbsp</td>
               </tr>
               <tr>
-                <td bgcolor="#BBEAE0" class="Txt11" >Платежи к отправке: </td>
+                <td bgcolor="#BBEAE0" class="Txt11" >РџР»Р°С‚РµР¶Рё Рє РѕС‚РїСЂР°РІРєРµ: </td>
                 <td bgcolor="#BBEAE0" class="Txt11" ><a href="details.php?id=4<?php if (!empty($_GET['prev'])) echo "&prev=1";?>"><?PHP echo $results['S_8'][0];?>&nbsp</a></td>
               </tr>
               <tr>
-                <td bgcolor="#BBEAE0" class="Txt11" >Выгруженные платежи: </td>
+                <td bgcolor="#BBEAE0" class="Txt11" >Р’С‹РіСЂСѓР¶РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё: </td>
                 <td bgcolor="#BBEAE0" class="Txt11" ><a href="details.php?id=6<?php if (!empty($_GET['prev'])) echo "&prev=1";?>"><?PHP echo $results['S_9'][0];?>&nbsp</a></td>
               </tr>
               <tr>
-                <td bgcolor="#BBEAE0" class="Txt11" >В реестре для МЦИ: </td>
+                <td bgcolor="#BBEAE0" class="Txt11" >Р’ СЂРµРµСЃС‚СЂРµ РґР»СЏ РњР¦Р: </td>
                 <td bgcolor="#BBEAE0" class="Txt11" ><a href="details.php?id=7<?php if (!empty($_GET['prev'])) echo "&prev=1";?>"><?PHP echo $results['S_10'][0];?>&nbsp</a></td>
               </tr>
               <tr>
-                <td bgcolor="#BBEAE0" class="Txt11" >Принятые МЦИ платежи</td>
+                <td bgcolor="#BBEAE0" class="Txt11" >РџСЂРёРЅСЏС‚С‹Рµ РњР¦Р РїР»Р°С‚РµР¶Рё</td>
                 <td bgcolor="#BBEAE0" class="Txt11" ><a href="details.php?id=8<?php if (!empty($_GET['prev'])) echo "&prev=1";?>"><?PHP echo $results['S_11'][0];?>&nbsp</a></td>
               </tr>
               <tr>
-                <td bgcolor="#BBEAE0" class="Txt11" >Отложенные платежи</td>
+                <td bgcolor="#BBEAE0" class="Txt11" >РћС‚Р»РѕР¶РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё</td>
                 <td bgcolor="#BBEAE0" class="Txt11" ><a href="details.php?id=5<?php if (!empty($_GET['prev'])) echo "&prev=1";?>"><?PHP echo $results['S_12'][0];?>&nbsp</a></td>
               </tr>
           </table></td>
@@ -207,45 +207,45 @@ window.event.returnValue=false;}
  <td>
 <table width="100%" class="base_txt" border="0" cellspacing="2" cellpadding="2">
  <tr>
-   <td width="250" class="Txt11" ><strong>План.</strong></td>
-   <td width="130" class="Txt11" ><strong>Факт.</strong></td>
+   <td width="250" class="Txt11" ><strong>РџР»Р°РЅ.</strong></td>
+   <td width="130" class="Txt11" ><strong>Р¤Р°РєС‚.</strong></td>
 
-   <td width="250" class="Txt11" ><strong>План</strong></td>
-   <td width="130" class="Txt11" ><strong>Факт.</strong></td>
+   <td width="250" class="Txt11" ><strong>РџР»Р°РЅ</strong></td>
+   <td width="130" class="Txt11" ><strong>Р¤Р°РєС‚.</strong></td>
  </tr>
  <tr>
   
    <td align="left" valign="top"><table width="100%" class="base_txt" border="0" cellspacing="2" cellpadding="2">
      <tr>
-       <td bgcolor="#B4DAE7"  class="Txt11" >МБК</td>
+       <td bgcolor="#B4DAE7"  class="Txt11" >РњР‘Рљ</td>
        <td bgcolor="#B4DAE7"  class="Txt11" ><?PHP echo $results['S_22'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Возврат МБК</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >Р’РѕР·РІСЂР°С‚ РњР‘Рљ</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_23'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Наличные</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >РќР°Р»РёС‡РЅС‹Рµ</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_24'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Валюта</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >Р’Р°Р»СЋС‚Р°</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_25'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Ценные бумаги</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >Р¦РµРЅРЅС‹Рµ Р±СѓРјР°РіРё</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_26'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Депозиты</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >Р”РµРїРѕР·РёС‚С‹</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_27'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Биржа</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >Р‘РёСЂР¶Р°</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_28'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Кредиты</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >РљСЂРµРґРёС‚С‹</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_29'][0];?>&nbsp</td>
      </tr>
    </table></td>
@@ -279,35 +279,35 @@ window.event.returnValue=false;}
    
    <td align="left" valign="top"><table width="100%" border="0" cellspacing="2" class="base_txt" cellpadding="2">
      <tr>
-       <td width="90" bgcolor="#B4DAE7"  class="Txt11">МБК</td>
+       <td width="90" bgcolor="#B4DAE7"  class="Txt11">РњР‘Рљ</td>
        <td  width="138" bgcolor="#B4DAE7" class="Txt11"><?PHP echo $results['S_38'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Возврат МБК</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >Р’РѕР·РІСЂР°С‚ РњР‘Рљ</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_39'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Наличные</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >РќР°Р»РёС‡РЅС‹Рµ</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_40'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Валюта</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >Р’Р°Р»СЋС‚Р°</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_41'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7">Ценные бумаги</td>
+       <td bgcolor="#B4DAE7">Р¦РµРЅРЅС‹Рµ Р±СѓРјР°РіРё</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_42'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Депозиты</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >Р”РµРїРѕР·РёС‚С‹</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_43'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Биржа</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >Р‘РёСЂР¶Р°</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_44'][0];?>&nbsp</td>
      </tr>
      <tr>
-       <td bgcolor="#B4DAE7" class="Txt11" >Кредиты</td>
+       <td bgcolor="#B4DAE7" class="Txt11" >РљСЂРµРґРёС‚С‹</td>
        <td bgcolor="#B4DAE7" class="Txt11" ><?PHP echo $results['S_45'][0];?>&nbsp</td>
      </tr>
    </table></td>

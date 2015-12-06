@@ -33,21 +33,21 @@
         </TR>
         <TR>
           <TD align="center"><img src="images/vr.gif" width="7" height="255"></TD>
-          <TD width="10000" height="240" align="center"><p>Добро пожаловать!  </p>
-          <p>Для доступа к системе "Платежная позиция ЛАЙТ" требуется авторизация:</p>
+          <TD width="10000" height="240" align="center"><p>Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ!  </p>
+          <p>Р”Р»СЏ РґРѕСЃС‚СѓРїР° Рє СЃРёСЃС‚РµРјРµ "РџР»Р°С‚РµР¶РЅР°СЏ РїРѕР·РёС†РёСЏ Р›РђР™Рў" С‚СЂРµР±СѓРµС‚СЃСЏ Р°РІС‚РѕСЂРёР·Р°С†РёСЏ:</p>
           <table width="100%" border="0" cellspacing="4" cellpadding="4">
             <tr>
               <form name="form_auth" method="post" action="">
-              <td width="25%">Логин:</td>
+              <td width="25%">Р›РѕРіРёРЅ:</td>
               <td width="75%"><input class=input name=login value=""></td>
             </tr>
             <tr>
-              <td>Пароль:</td>
+              <td>РџР°СЂРѕР»СЊ:</td>
               <td><input class=input type="password" name=passw value=""></td>
             </tr>
           </table>
      <input type=hidden name=enter value=yes>  
-     <input class=button type=submit value="Вход"></form>  
+     <input class=button type=submit value="Р’С…РѕРґ"></form>  
           <p>&nbsp;</p>
           <p>&nbsp; </p></TD>
           <TD align="center"><img src="images/vr.gif" width="7" height="255"></TD>
